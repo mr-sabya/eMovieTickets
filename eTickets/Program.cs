@@ -13,6 +13,10 @@ namespace eTickets
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            //Removes the required attribute for non-nullable reference types
+            builder.Services.AddControllers(
+                options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
+
             //DbContext
             builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
                 builder.Configuration.GetConnectionString("DefaultConnectionString")));
