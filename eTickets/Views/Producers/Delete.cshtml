@@ -1,0 +1,62 @@
+﻿@model Producer
+
+@{
+    ViewData["Title"] = "Details of " + Model.FullName;
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <h2>Details of @Model.FullName</h2>
+
+        <div class="row">
+            <div class="col-md-8 offset-2">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+                <div class="form-group text-center">
+                    <img id="ProfilePicturePreview" style="width: 200px" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ProfilePictureUrl" class="form-label"></label>
+                    <input asp-for="ProfilePictureUrl" class="form-control" readonly />
+                    <span asp-validation-for="ProfilePictureUrl" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="FullName" class="form-label"></label>
+                    <input asp-for="FullName" class="form-control" readonly />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Bio" class="form-label"></label>
+                    <input asp-for="Bio" class="form-control" readonly />
+                    <span asp-validation-for="Bio" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="Id" />
+                        <button type="submit" class="btn btn-danger float-end">Delete</button>
+                        <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            var output = document.getElementById("ProfilePicturePreview");
+            output.src = $('#ProfilePictureUrl').val();
+        })
+
+    </script>
+}
