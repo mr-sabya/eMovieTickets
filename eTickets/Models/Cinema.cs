@@ -5,7 +5,7 @@ namespace eTickets.Models
     public class Cinema
     {
         [Key]
-        public int ActorId { get; set; }
+        public int Id { get; set; }
 
 
         [Display(Name = "Logo")]

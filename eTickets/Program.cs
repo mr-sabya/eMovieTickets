@@ -1,5 +1,5 @@
 using eTickets.Data;
-using eTickets.Data.Services;
+using eTickets.Data.Services.ActorService;
 using Microsoft.EntityFrameworkCore;
 
 namespace eTickets

@@ -1,5 +1,5 @@
 ﻿using eTickets.Data;
-using eTickets.Data.Services;
+using eTickets.Data.Services.ActorService;
 using eTickets.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -70,7 +70,7 @@ namespace eTickets.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("ActorId, FullName, ProfilePictureUrl, Bio")] Actor actor)
+        public async Task<IActionResult> Edit(int id, [Bind("Id, FullName, ProfilePictureUrl, Bio")] Actor actor)
         {
             if (!ModelState.IsValid)
             {
@@ -78,8 +78,35 @@ namespace eTickets.Controllers
                 //return BadRequest(ModelState);
             }
 
-
             await _service.UpdateAsync(id, actor);
+            return RedirectToAction(nameof(Index));
+        }
+
+
+        //Get: Actors/Delete/id
+        public async Task<IActionResult> Delete(int id)
+        {
+            var details = await _service.GetByIdAsync(id);
+
+            if (details == null)
+            {
+                return View("NotFound");
+            }
+            return View(details);
+        }
+
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var details = await _service.GetByIdAsync(id);
+
+            if (details == null)
+            {
+                return View("NotFound");
+            }
+
+            await _service.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
 
