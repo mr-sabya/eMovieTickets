@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Movie>
 
 @{
-    ViewData["Title"] = "List of Cinemas";
+    ViewData["Title"] = "Home";
 }
 
 <div class="row">
@@ -15,7 +15,7 @@
                         <div class="card-header text-white bg-info">
                             <p class="card-text">
                                 <h5 class="card-title">
-                                    @item.Name <a href="" class="text-white float-end"><i class="bi bi-pencil-square"></i></a>
+                                    @item.Name
                                 </h5>
                             </p>
                         </div>
@@ -27,7 +27,7 @@
 
                     <div class="col-md-6">
                         <div class="card-body">
-                            
+
                             <p class="card-text"> <b>Cinema : </b> @item.Cinema.Name</p>
                             <p class="card-text"> <b>Category : </b> @item.Category.Name</p>
                             <p class="card-text"> <b>Start Date : </b> @item.StartDate.ToString("dd MMM, yy")</p>

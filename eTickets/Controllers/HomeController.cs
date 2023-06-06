@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace eTickets.Controllers
 {
-    public class MoviesController : Controller
+    public class HomeController : Controller
     {
         private readonly AppDbContext _context;
 
 
-        public MoviesController(AppDbContext context)
+        public HomeController(AppDbContext context)
         {
             _context = context;
         }
