@@ -2,6 +2,7 @@ using eTickets.Data;
 using eTickets.Data.Services.ActorService;
 using eTickets.Data.Services.CategoryService;
 using eTickets.Data.Services.CinemaService;
+using eTickets.Data.Services.MoviesService;
 using eTickets.Data.Services.ProducerService;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,6 +30,7 @@ namespace eTickets
             builder.Services.AddScoped<IProducersService, ProducersService>();
             builder.Services.AddScoped<ICinemasService, CinemasService>();
             builder.Services.AddScoped<ICategoriesService, CategoriesService>();
+            builder.Services.AddScoped<IMoviesService, MoviesService>();
 
             var app = builder.Build();
 
