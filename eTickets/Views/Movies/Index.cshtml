@@ -15,7 +15,7 @@
                         <div class="card-header text-white bg-info">
                             <p class="card-text">
                                 <h5 class="card-title">
-                                    @item.Name <a href="" class="text-white float-end"><i class="bi bi-pencil-square"></i></a>
+                                    @item.Name <a asp-action="Edit" asp-route-id="@item.Id" class="text-white float-end"><i class="bi bi-pencil-square"></i></a>
                                 </h5>
                             </p>
                         </div>
@@ -72,3 +72,6 @@
 
 
 </div>
+
+
+@await Html.PartialAsync("_CreateItem", "Movies")
