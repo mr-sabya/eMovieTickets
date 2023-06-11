@@ -4,6 +4,7 @@ using eTickets.Data.Services.ActorService;
 using eTickets.Data.Services.CategoryService;
 using eTickets.Data.Services.CinemaService;
 using eTickets.Data.Services.MoviesService;
+using eTickets.Data.Services.OrderService;
 using eTickets.Data.Services.ProducerService;
 using Microsoft.EntityFrameworkCore;
 
@@ -32,6 +33,7 @@ namespace eTickets
             builder.Services.AddScoped<ICinemasService, CinemasService>();
             builder.Services.AddScoped<ICategoriesService, CategoriesService>();
             builder.Services.AddScoped<IMoviesService, MoviesService>();
+            builder.Services.AddScoped<IOrdersService, OrdersService>();
 
             builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             builder.Services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
