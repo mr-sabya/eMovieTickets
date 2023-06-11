@@ -79,7 +79,8 @@
                             <a class="btn btn-outline-primary float-end" asp-action="Details" asp-route-id="@Model.Id">
                                 <i class="bi bi-eye-fill"></i> Show Details
                             </a>
-                            <a class="btn btn-success text-white" href="">
+                            <a class="btn btn-success text-white" asp-controller="Orders" asp-action="AddItemToShoppingCart"
+                               asp-route-id="@Model.Id">
                                 <i class="bi bi-eye-fill"></i>
                                 Add to Card
                             </a>
