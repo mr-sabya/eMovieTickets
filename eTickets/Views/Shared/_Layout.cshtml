@@ -65,14 +65,30 @@
 
                     </ul>
 
-                    <form class="d-flex" role="search" asp-controller="Movies" asp-action="Filter">
+                    <form class="d-flex g-0" role="search" asp-controller="Movies" asp-action="Filter">
                         <input class="form-control me-2" type="search" placeholder="Search for a movie...." aria-label="Search" name="searchString">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
                     </form>
 
                     <ul class="navbar-nav">
                         @await Component.InvokeAsync("ShoppingCartSummary")
                     </ul>
+
+                    <a class="btn btn-outline-success my-2 my-sm-0" asp-controller="Account" asp-action="Login">
+                        <i class="bi bi-box-arrow-in-right"></i> Login
+                    </a>
+
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown button
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" asp-controller="Orders" asp-action="Index">Orders</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
         </nav>

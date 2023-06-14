@@ -6,6 +6,9 @@ using eTickets.Data.Services.CinemaService;
 using eTickets.Data.Services.MoviesService;
 using eTickets.Data.Services.OrderService;
 using eTickets.Data.Services.ProducerService;
+using eTickets.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace eTickets
@@ -38,8 +41,14 @@ namespace eTickets
             builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             builder.Services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
 
-
+            //Auth
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            builder.Services.AddMemoryCache();
             builder.Services.AddSession();
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            });
 
             var app = builder.Build();
 
@@ -53,6 +62,9 @@ namespace eTickets
             app.UseRouting();
             app.UseSession();
 
+            app.UseAuthentication();
+            //app.UseAuthorization();
+
             app.UseAuthorization();
 
             app.MapControllerRoute(
@@ -60,6 +72,7 @@ namespace eTickets
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
             AppDbInitializer.Seed(app);
+            AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();
 
             app.Run();
         }
