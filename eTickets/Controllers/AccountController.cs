@@ -109,5 +109,11 @@ namespace eTickets.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+
+        public IActionResult AccessDenied(string ReturnUrl)
+        {
+            return View();
+        }
+
     }
 }
