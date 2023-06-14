@@ -2,11 +2,13 @@
 using eTickets.Data.Services.ActorService;
 using eTickets.Data.Services.CinemaService;
 using eTickets.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace eTickets.Controllers
 {
+    [Authorize]
     public class CinemasController : Controller
     {
         private readonly ICinemasService _service;
@@ -17,6 +19,8 @@ namespace eTickets.Controllers
             _service = service;
         }
 
+
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var cinemas = await _service.GetAllAsync();
@@ -44,6 +48,7 @@ namespace eTickets.Controllers
         }
 
 
+        [AllowAnonymous]
         //Get: Cinemas/Details/1
         public async Task<IActionResult> Details(int id)
         {

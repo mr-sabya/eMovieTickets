@@ -15,6 +15,10 @@ else
         <ul class="dropdown-menu w-100">
             <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" asp-controller="Orders" asp-action="Index">Orders</a></li>
+            @if (User.IsInRole("Admin"))
+            {
+                <li><a class="dropdown-item" asp-controller="Account" asp-action="Users">Users</a></li>
+            }
             <li>
                 <a class="dropdown-item" href="javascript:void(0)" onclick="document.getElementById('logout').submit();">
                     <i class="bi bi-box-arrow-right"></i> Logout

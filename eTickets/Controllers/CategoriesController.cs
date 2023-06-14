@@ -1,10 +1,12 @@
 ﻿using eTickets.Data.Services.CategoryService;
 using eTickets.Data.Services.CinemaService;
 using eTickets.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eTickets.Controllers
 {
+    [Authorize]
     public class CategoriesController : Controller
     {
         private readonly ICategoriesService _service;
@@ -15,6 +17,8 @@ namespace eTickets.Controllers
             _service = service;
         }
 
+
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var categories = await _service.GetAllAsync();
